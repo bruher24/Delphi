@@ -1,0 +1,82 @@
+unit Cmplx;
+
+interface
+uses Math;
+Type Complex = record
+                re:extended;
+                im:extended;
+      end;
+function Addc(x,y:Complex):Complex;
+function Mulc(x,y:Complex):Complex;
+function Divc(x,y:Complex):Complex;
+function Cplx(a,b:Extended):Complex;
+function Sqrtc(x:Complex):Complex;
+function Sqrc(x:Complex):Complex;
+function Lnc(x:Complex):Complex;
+
+implementation
+  function Addc;
+    begin
+      Addc.re:=x.re+y.re;
+      Addc.im:=x.im+y.im;
+    end;
+  function Mulc;
+    begin
+      Mulc.re:=x.re*y.re-x.im*y.im;
+      Mulc.im:=x.re*y.im+x.im*y.re;
+    end;
+  function Divc;
+    var z:extended;
+    begin
+      z:=Sqr(y.re)+Sqr(y.im);
+      Divc.re:=(x.re*y.re+x.im*y.im)/z;
+      Divc.im:=(x.im*y.re-x.re*y.im)/z;
+    end;
+  function Cplx;
+    begin
+      Cplx.re:=a;
+      Cplx.im:=b;
+    end;
+
+  function Sqrtc;
+    begin
+      if(x.im <> 0) then begin
+      Sqrtc.re:=Sqrt((Sqrt(Sqr(x.re)+Sqr(x.im))+x.re)/2);
+      Sqrtc.im:=(x.im/abs(x.im))*(Sqrt((Sqrt(Sqr(x.re)+Sqr(x.im))-x.re)/2));
+      end
+      else begin
+        Sqrtc.re:=0;
+        Sqrtc.im:=Sqrt(-x.re);
+      end;
+    end;
+
+  function Sqrc;
+    begin
+      Sqrc.re:=x.re*x.re - x.im*x.im;
+      Sqrc.im:=2*x.re*x.im;
+    end;
+
+  function Lnc;
+  var r, phi:extended;
+    begin
+      r:=Sqrt(Sqr(x.re)+Sqr(x.im));
+      Lnc.re:=Ln(r);
+
+      if(x.re >0) then begin
+        if(x.im <> 0) then phi:=ArcTan(x.im/x.re)
+        else phi:=0;
+      end;
+      if(x.re <0) then begin
+        if(x.im > 0) then phi:=pi+ArcTan(x.im/x.re);
+        if(x.im < 0) then phi:=-pi+ArcTan(x.im/x.re);
+        if(x.im = 0) then phi:=pi;
+      end;
+      if(x.re = 0) then begin
+        if(x.im > 0) then phi:=pi/2;
+        if(x.im < 0) then phi:=-pi/2;
+      end;
+
+      Lnc.im:=phi;
+    end;
+end.
+ 
