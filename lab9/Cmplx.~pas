@@ -11,8 +11,9 @@ function Mulc(x,y:Complex):Complex;
 function Divc(x,y:Complex):Complex;
 function Cplx(a,b:Extended):Complex;
 function Sqrtc(x:Complex):Complex;
-function Lnc(x:Complex):Complex;
 function Sqrc(x:Complex):Complex;
+function Lnc(x:Complex):Complex;
+
 implementation
   function Addc;
     begin
@@ -36,26 +37,27 @@ implementation
       Cplx.re:=a;
       Cplx.im:=b;
     end;
+
   function Sqrtc;
-    var phi, r: extended;
     begin
-      r:=Sqrt(x.re);
-      phi:=ArcTan2(x.re,x.im);
-      Sqrtc.re:=(r*cos((phi)/2));
-      Sqrtc.im:=(r*sin((phi)/2));
+      if(x.im <> 0) then begin
+      Sqrtc.re:=Sqrt((Sqrt(Sqr(x.re)+Sqr(x.im))+x.re)/2);
+      Sqrtc.im:=(x.im/abs(x.im))*(Sqrt((Sqrt(Sqr(x.re)+Sqr(x.im))-x.re)/2));
+      end;
     end;
-  function Lnc;
-    var phi, r: extended;
-    begin
-      r:=Sqrt(Sqr(x.re) + Sqr(x.im));
-      phi:=ArcTan2(x.re,x.im);
-      Lnc.re:= Ln(r);
-      Lnc.im:= phi;
-    end;
+
   function Sqrc;
     begin
       Sqrc.re:=x.re*x.re - x.im*x.im;
       Sqrc.im:=2*x.re*x.im;
+    end;
+
+  function Lnc;
+    var p:extended;
+    begin
+    p:=Sqr(x.re);
+      Lnc.re:= Ln(Sqrt(Sqr(x.re)+Sqr(x.im)));
+      Lnc.im:= ArcTan(x.im/x.re);
     end;
 end.
  

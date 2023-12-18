@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 192
-  Top = 113
-  Width = 608
-  Height = 331
+  Left = 240
+  Top = 135
+  Width = 723
+  Height = 470
   Caption = 'Form1'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -65,13 +65,27 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
+  object Label5: TLabel
+    Left = 192
+    Top = 32
+    Width = 32
+    Height = 13
+    Caption = 'Label5'
+  end
+  object Label6: TLabel
+    Left = 200
+    Top = 80
+    Width = 32
+    Height = 13
+    Caption = 'Label6'
+  end
   object Edit1: TEdit
     Left = 64
     Top = 40
     Width = 81
     Height = 21
     TabOrder = 0
-    Text = 'Edit1'
+    Text = '10'
   end
   object Edit2: TEdit
     Left = 64
@@ -79,7 +93,7 @@ object Form1: TForm1
     Width = 81
     Height = 21
     TabOrder = 1
-    Text = 'Edit2'
+    Text = '1'
   end
   object Edit3: TEdit
     Left = 64
@@ -87,7 +101,7 @@ object Form1: TForm1
     Width = 81
     Height = 21
     TabOrder = 2
-    Text = 'Edit3'
+    Text = '3'
   end
   object Edit4: TEdit
     Left = 64
@@ -95,7 +109,7 @@ object Form1: TForm1
     Width = 81
     Height = 21
     TabOrder = 3
-    Text = 'Edit4'
+    Text = '0,05'
   end
   object BitBtn1: TBitBtn
     Left = 24
@@ -107,8 +121,8 @@ object Form1: TForm1
     OnClick = BitBtn1Click
   end
   object Chart1: TChart
-    Left = 176
-    Top = 8
+    Left = 288
+    Top = 96
     Width = 409
     Height = 273
     BackWall.Brush.Color = clWhite

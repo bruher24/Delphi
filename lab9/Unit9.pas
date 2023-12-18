@@ -1,9 +1,9 @@
 unit Unit9;
 interface
 uses
-Windows, Messages, SysUtils, Classes, Graphics, Controls,
-Forms,Dialogs,StdCtrls, Buttons, TeEngine, Series, ExtCtrls, TeeProcs, Chart, Math,
-Cmplx;
+Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
+  Dialogs,StdCtrls, Buttons, TeEngine, Series, ExtCtrls, TeeProcs, Chart, Math,
+ Cmplx;
 type
  TForm1 = class(TForm)
  Chart1: TChart;
@@ -18,6 +18,8 @@ type
  Label4: TLabel;
  Series1: TFastLineSeries;
  Series2: TFastLineSeries;
+    Label5: TLabel;
+    Label6: TLabel;
  procedure BitBtn1Click(Sender: TObject);
  private
  { Private declarations }
@@ -32,7 +34,7 @@ procedure TForm1.BitBtn1Click(Sender: TObject); //Расчет
 var
  n,k:integer;
  xmin,xmax,h,x:extended;
- s,a,b,c,d:Complex;
+ s,a,b,c,d,p,m,l:Complex;
 begin
  series1.Clear;
  series2.Clear;
@@ -44,7 +46,7 @@ begin
  repeat
  s.re:=0;
  s.im:=0;
- for k:=0 to n do
+ for k:=0 to 1 do
  begin
  a:= Sqrc(Lnc(Sqrtc(Cplx(-x,k))));
  b:= Lnc(Sqrc(Cplx(-2*k,x)));
@@ -56,5 +58,10 @@ begin
  series2.AddXY(x,s.im,'',clteecolor); //Вывод мнимой части
  x:=x+h;
  until x>xmax;
+
+
+  Label5.Caption:=floatToStr(s.re);
+  Label6.Caption:=floatToStr(s.im);
+
 end;
 end.
