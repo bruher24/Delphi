@@ -45,7 +45,8 @@ implementation
       Sqrtc.im:=(x.im/abs(x.im))*(Sqrt((Sqrt(Sqr(x.re)+Sqr(x.im))-x.re)/2));
       end
       else begin
-        Sqrtc.re:=
+        Sqrtc.re:=Sqrt(x.re);
+        Sqrt.im:=0;
       end;
     end;
 
